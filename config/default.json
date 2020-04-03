@@ -1,4 +1,4 @@
 {
-    "mongoURI":"mongodb+srv://vkrutarth:Kr221019978@cluster0-tvcsj.mongodb.net/test?retryWrites=true&w=majority",
-    "jwtSecret":"yolo"
+    "mongoURI": "mongodb+srv://vkrutarth:Kr221019978@cluster0-tvcsj.mongodb.net/test?retryWrites=true&w=majority",
+    "jwtSecret": "yolo"
 }
