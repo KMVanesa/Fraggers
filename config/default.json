@@ -1,4 +1,6 @@
 {
     "mongoURI": "mongodb+srv://vkrutarth:Kr221019978@cluster0-tvcsj.mongodb.net/test?retryWrites=true&w=majority",
-    "jwtSecret": "yolo"
+    "jwtSecret": "yolo",
+    "githubClientId":"Iv1.3a9a2f422008ffab",
+    "githubSecret":"f97483cf90328717c00632ede93fa9a0f2ee0d78"
 }
