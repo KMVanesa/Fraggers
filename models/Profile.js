@@ -98,7 +98,7 @@ const ProfileSchema = new mongoose.Schema({
         twitter:{
             type:String
         },
-        tiktok:{
+        discord:{
             type:String
         }
     },
