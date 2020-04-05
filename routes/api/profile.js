@@ -1,7 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const auth = require('../../middleware/auth');
-
+const request=require('request');
+const config=require('config');
 const Profile = require('../../models/Profile');
 const User = require('../../models/User');
 const { check, validationResult } = require('express-validator');
@@ -287,5 +288,30 @@ try {
 }
 });
 
+
+//@route GET api/profile/github/:ign 
+//@access Public
+router.get('/github/:ign ', (req, res) => {
+    try {
+        const options={
+            uri:`https://api.github.com/users/${req.params.ign}/repos?per_page=5&sort=created:asc&client_id=${config.get('githubClientId')}&client_secret=${config.get('githubSecret')}`,
+            method:'GET',
+            headers:{'user-agent':'node.js'}
+        };
+        console.log(options);
+        request(options,(error,response,body)=>{
+            if(error){
+                console.error(error);
+            }
+            if (response.statusCode!=200) {
+                res.status(404).json({msg:"No Github Profile Found"});
+            }
+            res.json(JSON.parse(body));
+        });
+     } catch (err) {
+        console.error(err.message);
+        res.status(500).send('Server Error');
+    }
+});
 
 module.exports = router;
