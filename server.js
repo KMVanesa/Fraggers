@@ -11,6 +11,8 @@ app.use(express.json({extended:false}));
 app.use('/api/users',require('./routes/api/users'));
 app.use('/api/auth',require('./routes/api/auth'));
 app.use('/api/profile',require('./routes/api/profile'));
+app.use('/api/profile/experience',require('./routes/api/experience'));
+app.use('/api/profile/education',require('./routes/api/education'));
 app.use('/api/posts',require('./routes/api/posts'));
 //Listening Port
 app.listen(PORT,()=>console.log(`Port: ${PORT}`));
