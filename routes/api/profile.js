@@ -55,8 +55,11 @@ router.post('/', [auth, [
 
     const profileFields = {};
     profileFields.user = req.user.id;
-    if (website) {
+    if (organization) {
         profileFields.organization = organization;
+    }
+    if (website) {
+        profileFields.website = website;
     }
     if (location) {
         profileFields.location = location;
@@ -71,7 +74,7 @@ router.post('/', [auth, [
         profileFields.ign = ign;
     }
     if (skills) {
-        profileFields.skills = skills.split(',').map(skill => skill.trim());
+        profileFields.skills = skills;
     }
 
     //Build Social Object
@@ -100,7 +103,6 @@ router.post('/', [auth, [
             { user: req.user.id },
             { $set: profileFields },
             { new: true, upsert: true });
-        console.log(profile);
         return res.json(profile);
 
     } catch (err) {

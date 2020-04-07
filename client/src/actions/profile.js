@@ -33,7 +33,7 @@ export const createProfile = (formData,history,edit = false )=>async dispatch =>
             type: GET_PROFILE,
             payload: res.data
         })
-        dispatch(setAlert(edit ? 'Profile Updates' : 'Profile Created','success' ));
+        dispatch(setAlert(edit ? 'Profile Updated' : 'Profile Created','success' ));
         if(!edit){
             history.push('/dashboard')
         }
