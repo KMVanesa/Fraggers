@@ -19,7 +19,7 @@ const Dashboard = ({ getCurrentProfile, auth:{user}, profile: { profile, loading
         <h1 className="large text-primary">Dashboard</h1>
         <p className="lead"><i className="las la-user la-lg"></i>Welcome {user && user.name}</p>
         {profile!==null ? <Fragment><DashboardActions/><Experience experience={profile.experience} /><Education education={profile.education} /><div className="my-2">
-            <button className="btn btn-danger" onClick={()=>deleteAccount()}><i class="las la-user-slash" ></i>Delete</button>
+<button className="btn btn-danger" onClick={()=>deleteAccount()}><i class="las la-user-slash" ></i>{'     '}Permanently Delete the Account</button>
         </div>
         </Fragment> : <Fragment>
                 <p>You don't have profile, Click Here to create a one</p>

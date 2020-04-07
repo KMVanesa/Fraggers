@@ -10,13 +10,13 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
 
     const authLinks = (
         <ul>
+            <li><Link to="/profiles"><i className="las la-database"></i>{'  '}<span className="hide-sm"> Developers</span></Link></li>
             <li><Link to="/dashboard"><i className="las la-user la-lg"></i>{'  '}<span className="hide-sm"> Dashboard</span></Link></li>
             <li><a onClick={logout} href="#!"><i className="las la-sign-out-alt la-lg"></i>{'  '}<span className="hide-sm"> Logout</span></a></li>
         </ul>
     );
     const guestLinks = (
         <ul>
-            <li><a href="#!">Developers</a></li>
             <li><Link to="/register"><i className="las la-user-plus la-lg"></i>{'  '}<span className="hide-sm"> Register</span></Link></li>
             <li><Link to="/login"><i className="las la-sign-in-alt la-lg"></i>{'  '}<span className="hide-sm"> Login</span></Link></li>
         </ul>

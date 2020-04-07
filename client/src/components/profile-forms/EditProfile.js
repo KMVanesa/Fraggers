@@ -49,7 +49,7 @@ const EditProfile = ({ profile: { profile, loading }, createProfile, history, ge
             }
             setFormData(profileData);
         }
-    }, [loading]);
+    }, [loading,getCurrentProfile,profile]);
     const {
         organization,
         website,
