@@ -6,12 +6,12 @@ import {
     ADD_POST,
     GET_POST,
     ADD_COMMENT,
-    REMOVE_COMMENT
+    REMOVE_COMMENT,CLEAR_POST
 } from '../actions/types';
 
 const initialState = {
-    posts: [],
     post: null,
+    posts: [],
     loading: true,
     error: {}
 };
@@ -73,6 +73,12 @@ export default function (state = initialState, action) {
                         comment => comment._id !== payload
                     )
                 },
+                loading: false
+            };
+        case CLEAR_POST:
+            return {
+                ...state,
+                post: null,
                 loading: false
             };
         default:
