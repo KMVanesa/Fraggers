@@ -9,8 +9,9 @@ import logo from '../../img/logo2.png'
 const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
 
     const authLinks = (
+        
         <ul>
-            <li><Link to="/profiles"><i className="las la-database"></i>{'  '}<span className="hide-sm"> Developers</span></Link></li>
+            {/* <li><Link to="/profiles"><i className="las la-database"></i>{'  '}<span className="hide-sm"> </span></Link></li> */}
             <li><Link to="/posts "><i className="las la-pen-square"></i>{'  '}<span className="hide-sm"> Latest Posts</span></Link></li>
             <li><Link to="/dashboard"><i className="las la-user la-lg"></i>{'  '}<span className="hide-sm"> Dashboard</span></Link></li>
             <li><a onClick={logout} href="#!"><i className="las la-sign-out-alt la-lg"></i>{'  '}<span className="hide-sm"> Logout</span></a></li>
@@ -26,23 +27,19 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
 
     return (
         <nav className="navbar bg-dark">
-            
-                <ul>
-                    <li>
-    <Link to="/"><img src={logo} style={{ width: '150px', margin: 'auto',display:'inline' }} alt='Logo'></img></Link>
-                    </li>
-                </ul>
-                <ul>
-                    <li>
-                    <h1><Link to="/"></Link></h1>
-                    </li>
-                </ul>
 
-                
-                
-                {/* <Link to="/"><i className="las la-robot la-lg" ></i> Fraggers</Link> */}
+            <ul>
+                <li>
+                    <Link to="/"><img src={logo} style={{ width: '150px', margin: 'auto', display: 'inline' }} alt='Logo'></img></Link>
+                </li>
+            </ul>
 
-            
+
+
+
+            {/* <Link to="/"><i className="las la-robot la-lg" ></i> Fraggers</Link> */}
+
+
             {!loading && (<Fragment>{isAuthenticated ? authLinks : guestLinks}</Fragment>)}
         </nav>
     )

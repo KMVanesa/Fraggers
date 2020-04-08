@@ -27,7 +27,7 @@ const ProfileItem = ({
             <ul>
 
                 <li className='text-primary'>
-                    <i class="las la-angle-right"></i>Roles in the team:{skills}
+                    <i className="las la-angle-right"></i>Roles in the team:{skills}
                 </li>
 
             </ul>

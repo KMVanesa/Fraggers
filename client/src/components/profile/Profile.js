@@ -6,8 +6,8 @@ import Spinner from '../layouts/Spinner';
 import ProfileTop from './ProfileTop';
 import ProfileAbout from './ProfileAbout';
 import ProfileExperience from './ProfileExperience.js';
-import ProfileEducation from './ProfileEducation';
 import { getProfileById } from '../../actions/profile';
+import ProfileAchievements from './ProfileAchievements';
 
 const Profile = ({
     getProfileById,
@@ -26,7 +26,7 @@ const Profile = ({
                 <Spinner />
             ) : (
                     <Fragment>
-                        <Link to="/profiles" className="btn btn-light">
+                        <Link to="/posts" className="btn btn-light">
                             Back To Profiles
                         </Link>
                         {auth.isAuthenticated &&
@@ -56,18 +56,18 @@ const Profile = ({
                             </div>
 
                             <div className="profile-edu bg-white p-2">
-                                <h2 className="text-primary">Education</h2>
-                                {profile.education.length > 0 ? (
+                                <h2 className="text-primary">Achievements</h2>
+                                {profile.achievements.length > 0 ? (
                                     <Fragment>
-                                        {profile.education.map(education => (
-                                            <ProfileEducation
-                                                key={education._id}
-                                                education={education}
+                                        {profile.achievements.map(achievement => (
+                                            <ProfileAchievements
+                                                key={achievement._id}
+                                                achievement={achievement}
                                             />
                                         ))}
                                     </Fragment>
                                 ) : (
-                                        <h4>No education credentials</h4>
+                                        <h4>No achievement credentials</h4>
                                     )}
                             </div>
 

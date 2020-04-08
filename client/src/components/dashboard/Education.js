@@ -31,7 +31,7 @@ const Education = ({ education, deleteEducation }) => {
 
     return (
         <Fragment>
-            <h2 className="my-2">Education Credentials</h2>
+            <h2 className="my-2">Achievement Credentials</h2>
             <table className="table">
                 <thead>
                     <tr>
@@ -49,7 +49,7 @@ const Education = ({ education, deleteEducation }) => {
 
 Education.propTypes = {
     education: PropTypes.array.isRequired,
-    // deleteEducation: PropTypes.func.isRequired
+    deleteEducation: PropTypes.func.isRequired
 };
 
 export default connect(

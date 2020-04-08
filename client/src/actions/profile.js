@@ -149,6 +149,36 @@ export const addEducation = (formData, history) => async dispatch => {
     }
 }
 
+//Add Achievements
+
+export const addAchievements = (formData, history) => async dispatch => {
+    try {
+        const config = {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }
+        const res = await axios.put('/api/profile/achievements', formData, config);
+        dispatch({
+            type: UPDATE_PROFILE,
+            payload: res.data
+        })
+        dispatch(setAlert('Achievements Updated', 'success'));
+
+        history.push('/dashboard')
+
+    } catch (err) {
+        const errors = err.response.data.errors;
+        if (errors) {
+            errors.forEach(error => dispatch(setAlert(error.msg, 'danger')));
+        }
+        dispatch({
+            type: PROFILE_ERROR,
+            payload: { msg: err.response.statusText, status: err.response.status }
+        })
+    }
+}
+
 
 // Delete experience
 export const deleteExperience = id => async dispatch => {
@@ -189,7 +219,25 @@ export const deleteEducation = id => async dispatch => {
     }
 };
 
+// Delete Achievements
+export const deleteAchievement = id => async dispatch => {
+    try {
+        const res = await axios.delete(`/api/profile/achievements/${id}`);
 
+        dispatch({
+            type: UPDATE_PROFILE,
+            payload: res.data
+        });
+
+        dispatch(setAlert('Achievement Removed', 'success'));
+    } catch (err) {
+        dispatch({
+            type: PROFILE_ERROR,
+            payload: { msg: err.response.statusText, status: err.response.status }
+        });
+    }
+};
+//Delete Account
 export const deleteAccount = () => async dispatch => {
     if (window.confirm('Are you sure? This can NOT be undone!')) {
         try {

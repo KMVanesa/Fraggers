@@ -7,9 +7,10 @@ import { Link } from 'react-router-dom'
 import DashboardActions from './DashboardActions'
 import Experience from './Experience'
 import Education from './Education'
+import Achievements from './Achievements'
 
 
-const Dashboard = ({ getCurrentProfile, auth:{user}, profile: { profile, loading } ,deleteAccount}) => {
+const Dashboard = ({ getCurrentProfile, auth: { user }, profile: { profile, loading }, deleteAccount }) => {
 
     useEffect(() => {
         getCurrentProfile()
@@ -18,8 +19,8 @@ const Dashboard = ({ getCurrentProfile, auth:{user}, profile: { profile, loading
     return loading && profile === null ? <Spinner /> : <Fragment>
         <h1 className="large text-primary">Dashboard</h1>
         <p className="lead"><i className="las la-user la-lg"></i>Welcome {user && user.name}</p>
-        {profile!==null ? <Fragment><DashboardActions/><Experience experience={profile.experience} /><Education education={profile.education} /><div className="my-2">
-<button className="btn btn-danger" onClick={()=>deleteAccount()}><i class="las la-user-slash" ></i>{'     '}Permanently Delete the Account</button>
+        {profile !== null ? <Fragment><DashboardActions /><Experience experience={profile.experience} /><Achievements achievement={profile.achievements} /><div className="my-2">
+            <button className="btn btn-danger" onClick={() => deleteAccount()}><i className="las la-user-slash" ></i>{'     '}Permanently Delete the Account</button>
         </div>
         </Fragment> : <Fragment>
                 <p>You don't have profile, Click Here to create a one</p>
@@ -32,7 +33,7 @@ Dashboard.propTypes = {
     getCurrentProfile: PropTypes.func.isRequired,
     auth: PropTypes.object.isRequired,
     profile: PropTypes.object.isRequired,
-    deleteAccount:PropTypes.func.isRequired,
+    deleteAccount: PropTypes.func.isRequired,
 }
 
 const mapStateToProps = state => ({
@@ -40,4 +41,4 @@ const mapStateToProps = state => ({
     profile: state.profile
 })
 
-export default connect(mapStateToProps, { getCurrentProfile,deleteAccount })(Dashboard);
+export default connect(mapStateToProps, { getCurrentProfile, deleteAccount })(Dashboard);

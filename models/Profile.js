@@ -2,25 +2,25 @@ const mongoose = require('mongoose');
 
 const ProfileSchema = new mongoose.Schema({
     user: {
-        type: mongoose.Schema.Types.ObjectId ,
-        ref:'user'
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'user'
     },
-    organization : {
+    organization: {
         type: String,
     },
     website: {
-        type: String, 
+        type: String,
     },
     location: {
         type: String
     },
     status: {
         type: String,
-        required:true
+        required: true
     },
     skills: {
         type: String,
-        required:true
+        required: true
     },
     bio: {
         type: String,
@@ -28,83 +28,103 @@ const ProfileSchema = new mongoose.Schema({
     ign: {
         type: String,
     },
-    experience:[
+    experience: [
         {
-            title:{
+            title: {
                 type: String,
-                required:true
+                required: true
             },
-            organization:{
+            organization: {
                 type: String,
-                required:true
+                required: true
             },
-            location:{
+            location: {
                 type: String
             },
-            from:{
+            from: {
                 type: Date,
-                required:true 
+                required: true
             },
-            to:{
+            to: {
                 type: Date
             },
-            current:{
+            current: {
                 type: Boolean,
-                default:false
+                default: false
             },
-            description:{
-                type:String
+            description: {
+                type: String
             }
         }
     ],
-    education:[{
-        school:{
-            type:String,
-            required:true
+    education: [{
+        school: {
+            type: String,
+            required: true
         },
-        degree:{
-            type:String,
-            required:true
+        degree: {
+            type: String,
+            required: true
         },
-        field_of_study:{
-            type:String,
-            required:true
+        field_of_study: {
+            type: String,
+            required: true
         },
-        from:{
+        from: {
             type: Date,
-            required:true 
+            required: true
         },
-        to:{
+        to: {
             type: Date
         },
-        current:{
+        current: {
             type: Boolean,
-            default:false
+            default: false
         },
-        description:{
-            type:String
+        description: {
+            type: String
+        }
+    }], achievements: [{
+        title: {
+            type: String,
+            required: true
+        },
+        game: {
+            type: String,
+            required: true
+        },
+        location: {
+            type: String,
+            required: true
+        },
+        position: {
+            type: String,
+            default: false
+        },
+        description: {
+            type: String
         }
     }],
-    social:{
-        youtube:{
-            type:String
+    social: {
+        youtube: {
+            type: String
         },
-        instagram:{
-            type:String
+        instagram: {
+            type: String
         },
-        facebook:{
-            type:String
+        facebook: {
+            type: String
         },
-        twitter:{
-            type:String
+        twitter: {
+            type: String
         },
-        discord:{
-            type:String
+        discord: {
+            type: String
         }
     },
-    date:{
-        type:Date,
-        default:Date.now
+    date: {
+        type: Date,
+        default: Date.now
     }
 });
 

@@ -8,8 +8,8 @@ const DashboardActions = () => {
                 <i className="las la-user-circle text-primary"></i> Edit Profile</Link>
             <Link to="/add-experience" className="btn btn-light">
                 <i className="lab la-black-tie text-primary"></i> Add Experience</Link>
-            <Link to="/add-education" className="btn btn-light">
-                <i className="las la-graduation-cap text-primary"></i> Add Education</Link>
+            <Link to="/add-achievement" className="btn btn-light">
+                <i className="las la-award text-primary"></i> Add Achievements</Link>
         </div>
     )
 }
