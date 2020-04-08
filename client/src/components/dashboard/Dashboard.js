@@ -6,7 +6,7 @@ import Spinner from '../layouts/Spinner'
 import { Link } from 'react-router-dom'
 import DashboardActions from './DashboardActions'
 import Experience from './Experience'
-import Education from './Education'
+
 import Achievements from './Achievements'
 
 
