@@ -3,7 +3,7 @@ import React from 'react'
 import {Link, Redirect} from 'react-router-dom'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
-import logo from '../../img/logo2.png'
+import logo from '../../img/fraggers.png'
 
 const Landing = ({isAuthenticated}) => {
 

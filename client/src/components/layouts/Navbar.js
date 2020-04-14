@@ -3,13 +3,15 @@ import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types';
 import { logout } from '../../actions/auth';
-import logo from '../../img/logo2.png'
+import logo from '../../img/fraggers.png'
 
 
 const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
 
+    
+
     const authLinks = (
-        
+
         <ul>
             {/* <li><Link to="/profiles"><i className="las la-database"></i>{'  '}<span className="hide-sm"> </span></Link></li> */}
             {/* <li><Link to="/posts "><i className="las la-pen-square"></i>{'  '}<span className="hide-sm"> Latest Posts</span></Link></li> */}
@@ -27,7 +29,7 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
 
 
     return (
-        <nav className="navbar bg-dark">
+        <nav className="navbar bg-new">
 
             <ul>
                 <li>
