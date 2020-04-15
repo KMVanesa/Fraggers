@@ -15,7 +15,7 @@ app.use('/api/profile/experience',require('./routes/api/experience'));
 app.use('/api/profile/education',require('./routes/api/education'));
 app.use('/api/profile/achievements',require('./routes/api/achievements'));
 app.use('/api/posts',require('./routes/api/posts'));
-
+app.use('/api/tournaments',require('./routes/api/tournaments'));
 // server static assets in production
 if(process.env.NODE_ENV==='production'){
     //set static folder

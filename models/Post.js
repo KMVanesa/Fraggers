@@ -4,7 +4,9 @@ const PostSchema=new mongoose.Schema({
     user:{
         type:mongoose.Schema.Types.ObjectId,
         ref:'user'
-    }, 
+    },post_image:{
+        type:Buffer
+    } ,
     text: {
         type: String,
         required:true

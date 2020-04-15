@@ -2,9 +2,142 @@ const express = require('express');
 const router = express.Router();
 const auth = require('../../middleware/auth');
 const Post = require('../../models/Post');
-const Profile = require('../../models/Profile');
-const User = require('../../models/User');
 const { check, validationResult } = require('express-validator');
+const User=require('../../models/User')
+
+
+const config = require('config');
+const mongoose = require('mongoose');
+const db = config.get('mongoURI');
+const GridFsStorage = require('multer-gridfs-storage');
+const Grid = require('gridfs-stream');
+const crypto = require('crypto');
+const multer = require('multer');
+const path = require('path')
+// var upload = multer({ storage: storage });
+// var storage = multer.diskStorage({
+//     destination: function (req, file, cb) {
+//         cb(null, 'uploads');
+//     },
+//     filename: function (req, file, cb) {
+//         cb(null, file.originalname);
+//     }
+// });
+
+
+
+
+// router.post('/single', upload.single('profile'), async (req, res) => {
+
+//     try {
+//         const newPost = new Post({
+//             text: req.body.text,
+//             post_image: req.file
+//         });
+//         const post = await newPost.save();
+//         res.send(post);
+//         // const post= req.file;
+//         // res.send(post);
+//     } catch (err) {
+//         console.error(err.message);
+//         res.status(500).send('Server Error');
+//     }
+// });
+
+//Init gfs
+
+let gfs;
+var conn = mongoose.createConnection(db,
+    {useNewUrlParser: true,
+    useUnifiedTopology: true});
+conn.once('open', () => {
+    gfs = Grid(conn.db, mongoose.mongo);
+    gfs.collection('posts')
+    // all set!
+})
+
+const storage = new GridFsStorage({
+    url: db,
+    file: (req, file) => {
+        return new Promise((resolve, reject) => {
+            crypto.randomBytes(16, (err, buf) => {
+                if (err) {
+                    return reject(err);
+                }
+                const filename = buf.toString('hex') + path.extname(file.originalname);
+                const fileInfo = {
+                    filename: filename,
+                    bucketName: 'posts'
+                };
+                resolve(fileInfo);
+            });
+        });
+    }
+});
+const upload = multer({ storage });
+
+router.post('/single', upload.single('profile'), async (req, res) => {
+
+    try {
+        res.json({ file: req.file })
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send('Server Error');
+    }
+});
+
+router.get('/singles', (req, res) => {
+
+    try {
+        gfs.files.find().toArray((err, files) => {
+            if (!files) {
+                return res.status(500).send('Server Error');
+            }
+            return res.json(files);
+        })
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send('Server Error');
+    }
+});
+
+
+
+
+router.get('/single/:filename', (req, res) => {
+    gfs.files.findOne({ filename: req.params.filename }, (err, file) => {
+        // Check if file
+        if (!file || file.length === 0) {
+            return res.status(404).json({
+                err: 'No file exists'
+            });
+        }
+
+        // Check if image
+        if (file.contentType === 'image/jpeg' || file.contentType === 'image/png') {
+            // Read output to browser
+            const readstream = gfs.createReadStream(file.filename);
+            readstream.pipe(res);
+        } else {
+            res.status(404).json({
+                err: 'Not an image'
+            });
+        }
+    });
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
 //@route POST api/posts 
 //@access Private
 router.post(
@@ -24,7 +157,7 @@ router.post(
                 text: req.body.text,
                 name: user.name,
                 avatar: user.avatar,
-                user: req.user.id
+                user: req.user.id,
             });
 
             const post = await newPost.save();
