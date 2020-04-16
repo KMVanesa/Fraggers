@@ -41,8 +41,8 @@ router.post(
     }
 );
 
-// @route    GET api/posts
-// @desc     Get all posts
+// @route    GET api/tournaments
+// @desc     Get all tournaments
 // @access   Private
 router.get('/', auth, async (req, res) => {
     try {
@@ -54,7 +54,7 @@ router.get('/', auth, async (req, res) => {
     }
 });
 
-// @route    GET api/posts/:id
+// @route    GET api/tournaments/:id
 // @desc     Get post by ID
 // @access   Private
 router.get('/:id', auth, async (req, res) => {
@@ -78,7 +78,7 @@ router.get('/:id', auth, async (req, res) => {
 
 
 
-// @route    DELETE api/posts/:id
+// @route    DELETE api/tournaments/:id
 // @desc     Delete a post
 // @access   Private
 router.delete('/:id', auth, async (req, res) => {
@@ -106,7 +106,7 @@ router.delete('/:id', auth, async (req, res) => {
 });
 
 
-// @route    PUT api/posts/participant/:id
+// @route    PUT api/tournaments/participant/:id
 // @desc     Like a post
 // @access   Private
 router.put('/participant/:id', auth, async (req, res) => {
@@ -134,7 +134,7 @@ router.put('/participant/:id', auth, async (req, res) => {
     }
 });
 
-// @route    PUT api/posts/unlike/:id
+// @route    PUT api/tournaments/unlike/:id
 // @desc     Unlike a post
 // @access   Private
 router.put('/unlike/:id', auth, async (req, res) => {

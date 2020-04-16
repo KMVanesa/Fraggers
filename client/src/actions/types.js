@@ -27,4 +27,12 @@ export const ADD_POST = 'ADD_POST';
 export const ADD_COMMENT = 'ADD_COMMENT';
 export const REMOVE_COMMENT = 'REMOVE_COMMENT';
 
+export const CLEAR_TOUR = 'CLEAR_TOUR';
+export const GET_TOURS = 'GET_TOURS';
+export const GET_TOUR = 'GET_TOUR';
+export const TOUR_ERROR = 'TOUR_ERROR';
+export const UPDATE_PARTICIPANTS = 'UPDATE_PARTICIPANTS';
+export const DELETE_TOUR = 'DELETE_TOUR';
+export const ADD_TOUR = 'ADD_TOUR';
+
 export const ACCOUNT_DELETED = 'ACCOUNT_DELETED';  

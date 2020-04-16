@@ -13,7 +13,6 @@ const AddAchievements = ({ addAchievements, history }) => {
         description:''
     });
 
-    const [toDateDisabled, toggleDisabled] = useState(false);
 
     const {
         title,

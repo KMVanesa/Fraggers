@@ -15,6 +15,8 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
         <ul>
             {/* <li><Link to="/profiles"><i className="las la-database"></i>{'  '}<span className="hide-sm"> </span></Link></li> */}
             {/* <li><Link to="/posts "><i className="las la-pen-square"></i>{'  '}<span className="hide-sm"> Latest Posts</span></Link></li> */}
+            <li><Link to="/tournaments">tours</Link></li>
+            <li><Link to="/tournaments">Tournaments</Link></li>
             <li><Link to="/posts">Posts</Link></li>
             <li><Link to="/dashboard"><i className="las la-user la-lg"></i>{'  '}<span className="hide-sm"> Dashboard</span></Link></li>
             <li><a onClick={logout} href="#!"><i className="las la-sign-out-alt la-lg"></i>{'  '}<span className="hide-sm"> Logout</span></a></li>
