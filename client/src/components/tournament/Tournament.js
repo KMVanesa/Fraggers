@@ -1,11 +1,11 @@
-import React, { Fragment, useEffect } from 'react';
+import React, { Fragment, useEffect,useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Spinner from '../layouts/Spinner';
 import { addParticipants } from '../../actions/tournament';
 import { getTournament } from '../../actions/tournament';
 
-import { Link, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import Participants from './Participants';
 
 const Tournament = ({ addParticipants, getTournament, auth, tournament: { tournament, loading }, match }) => {
@@ -14,7 +14,7 @@ const Tournament = ({ addParticipants, getTournament, auth, tournament: { tourna
     }, [getTournament, match.params.id]);
 
     let history = useHistory();
-
+    const [display, toggle] = useState(false)
 
     return loading || tournament === null ? (
         <Spinner />
@@ -39,12 +39,13 @@ const Tournament = ({ addParticipants, getTournament, auth, tournament: { tourna
                                 </div>
                             ) : <Fragment>
                                     {(tournament.participants.find(participant => participant.user === auth.user._id) == null) ? (<button
-                                        onClick={() => { addParticipants(tournament._id) }}
+                                        onClick={() => { addParticipants(tournament._id); toggle(!display)}}
                                         type='button'
                                         className='btn btn-light'>
                                         Participate
                                     </button>) : (<h1>You have already participated</h1>)
                                     }
+                                    {display && <h1>  participated</h1>}
                                 </Fragment>}
                         </ul>
                     </div>

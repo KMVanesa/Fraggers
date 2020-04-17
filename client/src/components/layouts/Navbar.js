@@ -8,7 +8,7 @@ import logo from '../../img/fraggers.png'
 
 const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
 
-    
+
 
     const authLinks = (
 
@@ -24,6 +24,9 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
     );
     const guestLinks = (
         <ul>
+            <li>
+                <Link to="/about">About US</Link>
+            </li>
             <li><Link to="/register"><i className="las la-user-plus la-lg"></i>{'  '}<span className="hide-sm"> Register</span></Link></li>
             <li><Link to="/login"><i className="las la-sign-in-alt la-lg"></i>{'  '}<span className="hide-sm"> Login</span></Link></li>
         </ul>
@@ -37,6 +40,7 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
                 <li>
                     <Link to="/"><img src={logo} style={{ width: '150px', margin: 'auto', display: 'inline' }} alt='Logo'></img></Link>
                 </li>
+
             </ul>
 
 

@@ -160,7 +160,7 @@ var upload = multer({ storage: storage })
 // @route POST api/posts 
 // @access Private
 router.post(
-    '/', [auth, upload.single('profile'), [check('text', 'Text is required')
+    '/', [auth, upload.single('image'), [check('text', 'Text is required')
         .not()
         .isEmpty()
     ]], async (req, res) => {

@@ -24,7 +24,7 @@ const PostItem = ({
             <div>
                 <p className='my-1'>{text}</p>
                 
-                {image != "" && (<img src={image} style={{ width: "300px", height: "300px" }} alt='' />)}
+                {image !== "" && (<img src={image} style={{ width: "300px", height: "300px" }} alt='' />)}
 
 
                 <p className='post-date'>

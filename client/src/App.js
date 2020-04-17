@@ -12,7 +12,7 @@ import { Provider } from "react-redux";
 import store from "./store"
 import { loadUser } from './actions/auth';
 import Routes from './components/routing/Routes';
-
+import About from './components/layouts/About'
 
 
 
@@ -36,6 +36,7 @@ const App = () => {
           <Navbar />
           <Switch>
             <Route exact path="/" component={Landing} />
+            <Route exact path="/about" component={About} />
             <Routes component={Routes} />
           </Switch>
         </Fragment>

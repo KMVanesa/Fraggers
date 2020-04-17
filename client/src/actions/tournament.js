@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { setAlert } from './alert';
-import { GET_TOUR, GET_TOURS, TOUR_ERROR, UPDATE_PARTICIPANTS, DELETE_TOUR, ADD_TOUR,CLEAR_TOUR } from './types';
+import { GET_TOUR, GET_TOURS, TOUR_ERROR, UPDATE_PARTICIPANTS,  ADD_TOUR,CLEAR_TOUR } from './types';
 
 // Get TOURNAMENTS
 export const getTournaments = () => async dispatch => {

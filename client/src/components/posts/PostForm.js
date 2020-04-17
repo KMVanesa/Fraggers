@@ -4,27 +4,9 @@ import { connect } from 'react-redux';
 import { addPost } from '../../actions/post';
 
 const PostForm = ({ addPost }) => {
-    const [setForm, setText] = useState({
-        text:"",
-        image:""
-    });
+    const [text, setText] = useState('');
+    const [image, setPicture] = useState('');
 
-    const{
-        text,
-        image
-    }=setForm;
-
-    
-    
-
-    const onChange = e => setText({ [e.target.name]: e.target.value })
-
-    
-
-    const onSubmit = e => {
-        e.preventDefault();
-        addPost(setForm)
-    }
 
     return (
         <div className='post-form'>
@@ -33,7 +15,12 @@ const PostForm = ({ addPost }) => {
             </div>
             <form
                 className='form my-1'
-                onSubmit={e => onSubmit(e)}
+                onSubmit={e => {
+                    e.preventDefault();
+                    addPost({ text,image });
+                    setText('');
+                    setPicture('');
+                }}
             >
                 <textarea
                     name='text'
@@ -41,10 +28,10 @@ const PostForm = ({ addPost }) => {
                     rows='5'
                     placeholder='Create a post'
                     value={text}
-                    onChange={e => onChange(e)}
+                    onChange={e => setText(e.target.value)}
                     required
                 />
-                <input type='file' name='image' className='btn btn-light my-1' id='single' value={image} onChange={e => onChange(e)} /> 
+                <input type='file' name='image' value={image} className='btn btn-light my-1' id='single' onChange={e => setPicture(e.target.value)} />
                 <input type='submit' className='btn btn-dark my-1' value='Submit' />
             </form>
         </div>
