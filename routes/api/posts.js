@@ -185,6 +185,7 @@ router.post(
             const post = await newPost.save();
 
             res.json(post);
+            name='';
         } catch (err) {
             console.error(err.message);
             res.status(500).send('Server Error');

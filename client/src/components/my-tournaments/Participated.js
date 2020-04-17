@@ -7,10 +7,10 @@ import { addParticipants } from '../../actions/tournament';
 
 
 const Participated = ({
-    tournament: { _id, name, user, participants, entry_fees, game, pricepool, date }, showActions, auth
+    tournament: { _id, name, participants, entry_fees, game, pricepool, date }, showActions, auth
 }) => (
         <Fragment>
-            {(participants.find(participant => participant.user === auth.user._id) == null) ? (<p>You have not participated in any tournaments</p>) : (
+            {(participants.find(participant => participant.user === auth.user._id) != null) && (
                 <div className='tour bg-white p-1 my-1'>
                     <div>
                         <ul>

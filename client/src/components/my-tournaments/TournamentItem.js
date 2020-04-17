@@ -7,9 +7,9 @@ import { addParticipants } from '../../actions/tournament';
 
 
 const TournamentItem = ({
-    tournament: { _id, name, user, participants, entry_fees, game, pricepool, date }, showActions, auth
+    tournament: { _id, name, user, entry_fees, game, pricepool, date }, showActions, auth
 }) => (
-        user === auth.user._id ? <Fragment>
+        user === auth.user._id && <Fragment>
             <div className='tour bg-white p-1 my-1'>
                 <div>
                     <ul>
@@ -29,9 +29,7 @@ const TournamentItem = ({
                     )}
                 </div>
             </div>
-        </Fragment> : <Fragment>
-                You have not owned Tournaments Found
-        </Fragment>
+        </Fragment> 
     );
 
 TournamentItem.defaultProps = {

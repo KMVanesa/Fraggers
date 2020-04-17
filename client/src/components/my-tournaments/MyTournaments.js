@@ -20,7 +20,7 @@ const MyTournaments = ({ getTournaments, tournament: { tours, loading } }) => {
         <Spinner />
     ) : (
             <Fragment>
-                <h1 className='large text-primary'>Owned Tournaments</h1>
+                <h1 className='large text-primary'>Owned/Participated Tournaments</h1>
                 
 
                 <div className='posts'>
@@ -28,7 +28,7 @@ const MyTournaments = ({ getTournaments, tournament: { tours, loading } }) => {
                         <TournamentItem key={tournament._id} tournament={tournament} />
                     ))) : (<h4>No profiles found...</h4>)}
                 </div>
-                <h1 className='large text-primary'>Participated Tournaments</h1>
+                
                 <div className='posts'>
                     {tours.length > 0 ? (tours.map(tournament => (
                         <Participated key={tournament._id} tournament={tournament} />
