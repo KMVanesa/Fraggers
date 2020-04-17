@@ -5,7 +5,7 @@ import Spinner from '../layouts/Spinner';
 import { addParticipants } from '../../actions/tournament';
 import { getTournament } from '../../actions/tournament';
 
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import Participants from './Participants';
 
 const Tournament = ({ addParticipants, getTournament, auth, tournament: { tournament, loading }, match }) => {
@@ -13,15 +13,15 @@ const Tournament = ({ addParticipants, getTournament, auth, tournament: { tourna
         getTournament(match.params.id);
     }, [getTournament, match.params.id]);
 
+    let history = useHistory();
 
 
     return loading || tournament === null ? (
         <Spinner />
     ) : (
             <Fragment>
-                <Link to="/tournaments" className="btn">
-                    Back To tournaments
-                </Link>
+                <button className="btn" onClick={() => history.goBack()}>Back</button>
+
 
                 <div className='tour bg-white p-1 my-1'>
                     <div>
@@ -45,8 +45,6 @@ const Tournament = ({ addParticipants, getTournament, auth, tournament: { tourna
                                         Participate
                                     </button>) : (<h1>You have already participated</h1>)
                                     }
-
-
                                 </Fragment>}
                         </ul>
                     </div>

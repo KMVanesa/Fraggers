@@ -12,7 +12,7 @@ const TournamentItem = ({
         <div className='tour bg-white p-1 my-1'>
             <div>
                 <ul>
-                    <li>Name:{name}</li>
+                    <li><strong>Name:{name}</strong></li>
                     <li>Game:{game}</li>
                     <li>Prize Pool:{pricepool}</li>
                     <li>Entry Fees:{entry_fees}</li>
@@ -23,14 +23,6 @@ const TournamentItem = ({
 
                 {showActions && (
                     <Fragment>
-                        {/* <button
-                            onClick={() => addParticipants(_id)}
-                            type='button'
-                            className='btn btn-light'>
-                            <i className='las la-thumbs-up' />{' '}
-                            <span>{participants.length > 0 && <span>{participants.length}</span>}</span>
-                        </button> */}
-
                         <Link to={`/tournaments/${_id}`} className='btn btn-primary'>Read More...
                         </Link>
                     </Fragment>

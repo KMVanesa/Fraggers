@@ -2,7 +2,7 @@ import React, { useState, Fragment } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { createProfile } from '../../actions/profile'
-import { Link, withRouter } from 'react-router-dom'
+import { Link, withRouter, useHistory } from 'react-router-dom'
 
 const CreateProfile = ({createProfile,history}) => {
     const [formData, setFormData] = useState({
@@ -19,7 +19,7 @@ const CreateProfile = ({createProfile,history}) => {
         twitter: '',
         discord: ''
     })
-
+    let hist = useHistory();
     const [displaySocialInputs, toggleSocialInputs] = useState(false)
 
     const {
@@ -143,7 +143,7 @@ const CreateProfile = ({createProfile,history}) => {
 
 
                 <input type="submit" value="Submit" className="btn btn-primary my-1" />
-                <Link className="btn btn-light my-1" to="/dashboard">Go Back</Link>
+                <Link className="btn btn-light my-1" onClick={() => hist.goBack()}>Go Back</Link>
             </form>
         </Fragment>
     )

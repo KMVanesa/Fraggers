@@ -1,6 +1,6 @@
 import React, { Fragment, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Spinner from '../layouts/Spinner';
 import ProfileTop from './ProfileTop';
@@ -19,16 +19,14 @@ const Profile = ({
     useEffect(() => {
         getProfileById(match.params.id);
     }, [getProfileById, match.params.id, nullProfile]);
-
+    let history = useHistory();
     return (
         <Fragment>
             {profile === null || loading ? (
                 <Spinner />
             ) : (
                     <Fragment>
-                        <Link to="/posts" className="btn btn-light">
-                            Back To Posts
-                        </Link>
+                        <button className="btn" onClick={() => history.goBack()}>Back</button>
                         {auth.isAuthenticated &&
                             auth.loading === false &&
                             auth.user._id === profile.user._id && (
@@ -71,7 +69,7 @@ const Profile = ({
                                     )}
                             </div>
 
-                            
+
                         </div>
                     </Fragment>
                 )}

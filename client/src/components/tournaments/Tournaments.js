@@ -16,10 +16,10 @@ const Tournaments = ({ getTournaments, tournament: { tours, loading } }) => {
         ) : (
         <Fragment>
             <h1 className='large text-primary'>Tournaments</h1>
+            <TournamentForm />
             <p className='lead'>
                 <i className='las la-user' /> Participate here
                 </p>
-            <TournamentForm />
             <div className='posts'>
                 {tours.length>0?(tours.map(tournament => (
                         <TournamentItem key={tournament._id} tournament={tournament} />
