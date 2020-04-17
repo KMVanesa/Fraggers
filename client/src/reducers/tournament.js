@@ -28,13 +28,13 @@ export default function (state = initialState, action) {
         case ADD_TOUR:
             return {
                 ...state,
-                tournaments: [payload, ...state.tournaments],
+                tours: [payload, ...state.tours],
                 loading: false
             };
         case DELETE_TOUR:
             return {
                 ...state,
-                tournaments: state.tournaments.filter(tournament => tournament._id !== payload),
+                tours: state.tours.filter(tournament => tournament._id !== payload),
                 loading: false
             };
         case TOUR_ERROR:
@@ -46,7 +46,7 @@ export default function (state = initialState, action) {
         case UPDATE_PARTICIPANTS:
             return {
                 ...state,
-                tournaments: state.tournaments.map(tournament =>
+                tours: state.tours.map(tournament =>
                     tournament._id === payload.id ? { ...tournament, participants: payload.participants } : tournament
                 ),
                 loading: false

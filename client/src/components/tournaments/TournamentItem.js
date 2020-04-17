@@ -7,31 +7,31 @@ import { addParticipants } from '../../actions/tournament';
 
 
 const TournamentItem = ({
-    addParticipants,
-    auth,
-    tournament: { _id, text, name, entry_fees, user, participants, date },
-    showActions
+    tournament: { _id, name, entry_fees,game, pricepool, date },showActions
 }) => (
-        <div className='post bg-white p-1 my-1'>
+        <div className='tour bg-white p-1 my-1'>
             <div>
-                <p className='my-1'>{name}</p>
-                <p className='my-1'>{text}</p>
-                <p className='my-1'>{entry_fees}</p>
+                <ul>
+                    <li>Name:{name}</li>
+                    <li>Game:{game}</li>
+                    <li>Prize Pool:{pricepool}</li>
+                    <li>Entry Fees:{entry_fees}</li>
+                </ul>
                 <p className='post-date'>
                     Posted on <Moment format='YYYY/MM/DD'>{date}</Moment>
                 </p>
 
                 {showActions && (
                     <Fragment>
-                        <button
+                        {/* <button
                             onClick={() => addParticipants(_id)}
                             type='button'
                             className='btn btn-light'>
                             <i className='las la-thumbs-up' />{' '}
                             <span>{participants.length > 0 && <span>{participants.length}</span>}</span>
-                        </button>
+                        </button> */}
 
-                        <Link to={`/tournaments/${_id}`} className='btn btn-primary'>
+                        <Link to={`/tournaments/${_id}`} className='btn btn-primary'>Read More...
                         </Link>
                     </Fragment>
                 )}
@@ -44,7 +44,6 @@ TournamentItem.defaultProps = {
 };
 
 TournamentItem.propTypes = {
-    post: PropTypes.object.isRequired,
     auth: PropTypes.object.isRequired,
     addParticipants: PropTypes.func.isRequired,
     showActions: PropTypes.bool

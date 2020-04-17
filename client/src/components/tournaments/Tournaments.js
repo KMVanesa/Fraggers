@@ -10,16 +10,15 @@ const Tournaments = ({ getTournaments, tournament: { tours, loading } }) => {
     useEffect(() => {
         getTournaments();
     }, [getTournaments]);
-    return (
-        // return loading ? (
-        //     <Spinner />
-        // ) : (
+    // return (
+        return loading ? (
+            <Spinner />
+        ) : (
         <Fragment>
             <h1 className='large text-primary'>Tournaments</h1>
             <p className='lead'>
-                <i className='las la-user' /> Participants
+                <i className='las la-user' /> Participate here
                 </p>
-                {console.log("kmv3")}
             <TournamentForm />
             <div className='posts'>
                 {tours.length>0?(tours.map(tournament => (
@@ -36,7 +35,6 @@ Tournaments.propTypes = {
 };
 
 const mapStateToProps = state => (
-    console.log(state),
     {
     tournament: state.tournament
 });

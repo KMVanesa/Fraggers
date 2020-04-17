@@ -16,6 +16,9 @@ import Post from '../post/Post';
 import AddAchievements from '../profile-forms/AddAchievements';
 import NotFound from '../layouts/NotFound';
 import Tournaments from '../tournaments/Tournaments'
+import AddTournament from '../tournament-form/AddTournament'
+import Tournament from '../tournament/Tournament'
+import MyTournaments from '../my-tournaments/MyTournaments'
 
 const Routes = () => {
     return (
@@ -34,6 +37,9 @@ const Routes = () => {
                 <PrivateRoute exact path="/posts" component={Posts} />
                 <PrivateRoute exact path="/posts/:id" component={Post} />
                 <PrivateRoute exact path="/tournaments" component={Tournaments} />
+                <PrivateRoute exact path="/add-tournament" component={AddTournament} />
+                <PrivateRoute exact path="/tournaments/:id" component={Tournament} />
+                <PrivateRoute exact path="/my_tournaments" component={MyTournaments} />
                 <Route component={NotFound} />
             </Switch>
         </section>

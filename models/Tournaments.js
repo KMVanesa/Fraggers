@@ -8,7 +8,7 @@ const TournamentSchema = new mongoose.Schema({
     text: {
         type: String,
         required: true
-    }, 
+    },
     from: {
         type: Date
     },
@@ -21,7 +21,7 @@ const TournamentSchema = new mongoose.Schema({
     pricepool: {
         type: String
     },
-    entry_fees:{
+    entry_fees: {
         type: String
     },
     game: {
@@ -31,7 +31,18 @@ const TournamentSchema = new mongoose.Schema({
         user: {
             type: mongoose.Schema.Types.ObjectId,
             ref: 'user'
+        },
+        name: {
+            type: String
+        },
+        avatar: {
+            type: String
+        },
+        date: {
+            type: Date,
+            default: Date.now
         }
+
     }],
     date: {
         type: Date,

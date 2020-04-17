@@ -16,6 +16,7 @@ router.post(
         if (!errors.isEmpty()) {
             return res.status(400).json({ errors: errors.array() });
         }
+        
 
         try {
             const user = await User.findById(req.user.id).select('-password');
@@ -111,6 +112,7 @@ router.delete('/:id', auth, async (req, res) => {
 // @access   Private
 router.put('/participant/:id', auth, async (req, res) => {
     try {
+        const user = await User.findById(req.user.id).select('-password');
         const tournament = await Tournament.findById(req.params.id);
         if (
             tournament.user.toString() === req.user.id
@@ -124,7 +126,13 @@ router.put('/participant/:id', auth, async (req, res) => {
             return res.status(400).json({ msg: 'User Already Participated' });
         }
 
-        tournament.participants.unshift({ user: req.user.id });
+        const participant = {
+            name: user.name,
+            avatar: user.avatar,
+            user: req.user.id
+        };
+
+        tournament.participants.unshift(participant);
 
         await tournament.save();
 

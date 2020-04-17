@@ -27,7 +27,7 @@ export const getTournaments = () => async dispatch => {
 export const addParticipants = id => async dispatch => {
     try {
         const res = await axios.put(`/api/tournaments/participant/${id}`);
-
+        console.log("hello")
         dispatch({
             type: UPDATE_PARTICIPANTS,
             payload: { id, participants: res.data }
@@ -67,6 +67,7 @@ export const addTournament = formData => async dispatch => {
 
 // Get TOURNAMENT
 export const getTournament = id => async dispatch => {
+    
     try {
         const res = await axios.get(`/api/tournaments/${id}`);
 
